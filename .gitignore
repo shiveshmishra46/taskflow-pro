@@ -1,0 +1,8 @@
+node_modules
+dist
+.mongo-data
+.env
+.DS_Store
+npm-debug.log*
+client/.env
+server/.env
