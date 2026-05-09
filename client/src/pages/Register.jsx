@@ -7,6 +7,7 @@ export default function Register() {
   const [form, setForm] = useState({ name: '', email: '', password: '' });
   const [error, setError] = useState('');
   const [submitting, setSubmitting] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -16,7 +17,10 @@ export default function Register() {
     try {
       await register(form.name, form.email, form.password);
     } catch (err) {
-      setError(err.response?.data?.message || 'Registration failed');
+      setError(
+        err.response?.data?.message ||
+          (err.request ? 'Server not reachable. Check backend and API URL.' : 'Registration failed')
+      );
     } finally {
       setSubmitting(false);
     }
@@ -53,14 +57,24 @@ export default function Register() {
 
         <label className="mt-4 block text-sm font-semibold text-slate-700">
           Password
-          <input
-            type="password"
-            required
-            minLength="6"
-            value={form.password}
-            onChange={(event) => setForm({ ...form, password: event.target.value })}
-            className="mt-2 w-full rounded-md border border-slate-300 px-3 py-2 outline-none focus:border-brand focus:ring-2 focus:ring-blue-100"
-          />
+          <div className="mt-2 flex rounded-md border border-slate-300 bg-white focus-within:border-brand focus-within:ring-2 focus-within:ring-blue-100">
+            <input
+              type={showPassword ? 'text' : 'password'}
+              required
+              minLength="6"
+              value={form.password}
+              onChange={(event) => setForm({ ...form, password: event.target.value })}
+              className="min-w-0 flex-1 rounded-l-md px-3 py-2 outline-none"
+            />
+            <button
+              type="button"
+              onClick={() => setShowPassword((value) => !value)}
+              className="shrink-0 rounded-r-md px-3 py-2 text-sm font-semibold text-brand transition hover:bg-blue-50"
+              aria-label={showPassword ? 'Hide password' : 'Show password'}
+            >
+              {showPassword ? 'Hide' : 'Show'}
+            </button>
+          </div>
         </label>
 
         <button
