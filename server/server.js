@@ -12,15 +12,19 @@ await connectDB();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
+const normalizeOrigin = (origin) => origin.replace(/\/$/, '');
+
 const allowedOrigins = (process.env.CLIENT_URL || '*')
   .split(',')
-  .map((origin) => origin.trim())
+  .map((origin) => normalizeOrigin(origin.trim()))
   .filter(Boolean);
 
 app.use(
   cors({
     origin(origin, callback) {
-      if (!origin || allowedOrigins.includes('*') || allowedOrigins.includes(origin)) {
+      const requestOrigin = origin ? normalizeOrigin(origin) : origin;
+
+      if (!requestOrigin || allowedOrigins.includes('*') || allowedOrigins.includes(requestOrigin)) {
         callback(null, true);
         return;
       }
