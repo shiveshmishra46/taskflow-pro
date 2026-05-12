@@ -220,8 +220,8 @@ Admin only.
 
 ## Submission Links
 
-- Live URL: add your Vercel deployment URL after deployment
-- Backend API URL: add your Railway deployment URL after deployment
-- GitHub repo: add your GitHub repository URL after pushing
+- Live URL: https://taskflow-pro-theta-woad.vercel.app/
+- Backend API URL: taskflow-pro-production-a10d.up.railway.app
+- GitHub repo: https://github.com/shiveshmishra46/taskflow-pro.git
 
 
