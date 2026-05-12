@@ -220,25 +220,7 @@ Admin only.
 
 ## Submission Links
 
-- Live URL: add your Vercel deployment URL after deployment
-- Backend API URL: add your Railway deployment URL after deployment
-- GitHub repo: add your GitHub repository URL after pushing
+- Live URL: https://taskflow-pro-theta-woad.vercel.app/
+- Backend API URL: taskflow-pro-production-a10d.up.railway.app
+- GitHub repo: https://github.com/shiveshmishra46/taskflow-pro.git
 
-## Demo Video Script
-
-1. Introduce TaskFlow Pro as a MERN project management app with role-based task tracking.
-2. Register a new account and explain that JWT auth and bcrypt password hashing are used.
-3. Create a second member account, then login as the admin account.
-4. Create a project, add the member and open the project details page.
-5. Create tasks, assign them to members, set due dates and show status values.
-6. Show the dashboard cards for total, completed, pending and overdue tasks.
-7. Demonstrate filters by status and assigned user.
-8. Login as the member and show that the member sees assigned tasks and can update task status.
-9. Briefly explain deployment: backend on Railway, frontend on Vercel, MongoDB through `MONGO_URI`.
-
-## Production Notes
-
-- Use a strong `JWT_SECRET` in production.
-- Use MongoDB Atlas for the deployed database.
-- Keep `CLIENT_URL` locked to the deployed frontend URL.
-- Never commit `.env` files.
